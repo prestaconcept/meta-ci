@@ -1,0 +1,24 @@
+{
+    "name": "presta/meta-ci",
+    "description": "Dependencies for continuous integration",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Epely",
+            "email": "depely@prestaconcept.net"
+        }
+    ],
+    "minimum-stability": "stable",
+    "packages": {
+        
+    },
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "http://pear.php.net"
+        }
+    ],
+    "require": {
+	"pear-pear/PHP_CodeSniffer": "1.4.7"
+    }
+}
