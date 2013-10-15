@@ -8,10 +8,8 @@
             "email": "depely@prestaconcept.net"
         }
     ],
+    "version": "1.0.0-dev",
     "minimum-stability": "stable",
-    "packages": {
-        
-    },
     "repositories": [
         {
             "type": "pear",
