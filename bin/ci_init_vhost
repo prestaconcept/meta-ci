@@ -2,6 +2,8 @@
 
 HTTPD_JENKINS_VHOST_DIR=/etc/httpd/conf.d/jenkins_vhosts/
 
+HTTPD_WEBROOT=$1
+
 if [ -z "${JOB_NAME}" ]
 then
     echo "A job name must be set"
@@ -16,6 +18,11 @@ fi
 if [ ! -d "$HTTPD_JENKINS_VHOST_DIR" -o ! -w "$HTTPD_JENKINS_VHOST_DIR" ]; then
 	echo "$HTTPD_JENKINS_VHOST_DIR must be set and writable"
     exit 1
+fi
+
+if [ ! -d "${WORKSPACE}/$HTTPD_WEBROOT" ]; then
+  echo "DocumentRoot ${WORKSPACE}/$HTTPD_WEBROOT does not exists"
+  exit 1
 fi
 
 if [ !  -w /etc/hosts ]; then
@@ -41,8 +48,8 @@ echo "== writing vhost file =="
 cat > $HTTPD_JENKINS_VHOST_DIR/${JOB_NAME}.conf <<EOF
 <VirtualHost *:80>
     ServerName ${httpdServerName}
-    DocumentRoot ${WORKSPACE}/public"
-    <Directory ${WORKSPACE}/public>
+    DocumentRoot ${WORKSPACE}/$HTTPD_WEBROOT
+    <Directory ${WORKSPACE}/$HTTPD_WEBROOT>
         AllowOverride all
         Order allow,deny
         Allow from all

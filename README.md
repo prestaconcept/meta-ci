@@ -53,7 +53,7 @@ jenkins ALL=(ALL) NOPASSWD: /usr/sbin/apachectl -t
 In in order to run behat validations or other stuff, this creates a vhost for current job
 
 ~~~
-bin/ci_init_vhost
+bin/ci_init_vhost [<subdir_for_documentroot>]
 ~~~
 
 The server name will be `{JOB_NAME}.loc`.
