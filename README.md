@@ -40,7 +40,7 @@ visudo -f /etc/sudoers.d/jenkins
 file content to allow HTTPD configuration test + reload
 
 ~~~
-
+Defaults:jenkins !requiretty
 jenkins ALL=(ALL) NOPASSWD: /usr/sbin/apachectl graceful
 jenkins ALL=(ALL) NOPASSWD: /usr/sbin/apachectl -t
 ~~~
