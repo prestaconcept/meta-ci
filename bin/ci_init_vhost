@@ -1,16 +1,34 @@
 #!/bin/bash
 
-JOBNAME=$1
+HTTPD_JENKINS_VHOST_DIR=/etc/httpd/conf.d/jenkins_vhosts/
 
-if [ -z ${JOBNAME} ]
+if [ -z "${JOB_NAME}" ]
 then
     echo "A job name must be set"
-    exit
+    exit 1
 fi
 
-# Set up a host file entry if none exists
-hostFileEntry="127.0.0.1 ${JOB_NAME}.loc"
+if [ -z "${WORKSPACE}" ]; then
+    echo "\${WORKSPACE} must be set"
+    exit 1
+fi
 
+if [ ! -d "$HTTPD_JENKINS_VHOST_DIR" -o ! -w "$HTTPD_JENKINS_VHOST_DIR" ]; then
+	echo "$HTTPD_JENKINS_VHOST_DIR must be set and writable"
+    exit 1
+fi
+
+if [ !  -w /etc/hosts ]; then
+    echo "/etc/hosts not writable"
+    exit 1
+fi
+
+httpdServerName=${JOB_NAME}.loc
+
+# Set up a host file entry if none exists
+hostFileEntry="127.0.0.1 ${httpdServerName}"
+
+echo "== writing /etc/hosts file =="
 if fgrep -i "$hostFileEntry" /etc/hosts
 then
         echo "${hostFileEntry}" already in hosts file
@@ -18,16 +36,23 @@ else
         echo $hostFileEntry >> /etc/hosts
 fi
 
+echo "== writing vhost file =="
 # Set up a virtual host for this job
-echo "<VirtualHost *:80>" > /etc/httpd/conf.d/${JOB_NAME}.conf
-echo "    ServerName ${JOB_NAME}.loc" >> /etc/httpd/conf.d/${JOB_NAME}.conf
-echo "    DocumentRoot ${WORKSPACE}/public" >> /etc/httpd/conf.d/${JOB_NAME}.conf
-echo "        <Directory ${WORKSPACE}/public>" >> /etc/httpd/conf.d/${JOB_NAME}.conf
-echo "            AllowOverride all" >> /etc/httpd/conf.d/${JOB_NAME}.conf
-echo "            Order allow,deny" >> /etc/httpd/conf.d/${JOB_NAME}.conf
-echo "            Allow from all" >> /etc/httpd/conf.d/${JOB_NAME}.conf
-echo "        </Directory>" >> /etc/httpd/conf.d/${JOB_NAME}.conf
-echo "</VirtualHost>" >> /etc/httpd/conf.d/${JOB_NAME}.conf
+cat > $HTTPD_JENKINS_VHOST_DIR/${JOB_NAME}.conf <<EOF
+<VirtualHost *:80>
+    ServerName ${httpdServerName}
+    DocumentRoot ${WORKSPACE}/public"
+    <Directory ${WORKSPACE}/public>
+        AllowOverride all
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+EOF
 
-# Reload Apache
-sudo /sbin/service httpd reload
+echo "== Reloading Apache =="
+sudo apachectl -t && sudo apachectl graceful
+ret=$?
+echo "exit code=$ret"
+exit $ret
+
