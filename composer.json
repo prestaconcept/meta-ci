@@ -28,5 +28,6 @@
         "pear-phpunit/PHP_CodeBrowser": "1.0.2",
         "phpmd/phpmd" : "1.4.*",
         "pdepend/pdepend" : "1.1.1"
-    }
+    },
+    "bin": ["bin/ci_init_vhost"]
 }

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+JOBNAME=$1
+
+if [ -z ${JOBNAME} ]
+then
+    echo "A job name must be set"
+    exit
+fi
+
+# Set up a host file entry if none exists
+hostFileEntry="127.0.0.1 ${JOB_NAME}.loc"
+
+if fgrep -i "$hostFileEntry" /etc/hosts
+then
+        echo "${hostFileEntry}" already in hosts file
+else
+        echo $hostFileEntry >> /etc/hosts
+fi
+
+# Set up a virtual host for this job
+echo "<VirtualHost *:80>" > /etc/httpd/conf.d/${JOB_NAME}.conf
+echo "    ServerName ${JOB_NAME}.loc" >> /etc/httpd/conf.d/${JOB_NAME}.conf
+echo "    DocumentRoot ${WORKSPACE}/public" >> /etc/httpd/conf.d/${JOB_NAME}.conf
+echo "        <Directory ${WORKSPACE}/public>" >> /etc/httpd/conf.d/${JOB_NAME}.conf
+echo "            AllowOverride all" >> /etc/httpd/conf.d/${JOB_NAME}.conf
+echo "            Order allow,deny" >> /etc/httpd/conf.d/${JOB_NAME}.conf
+echo "            Allow from all" >> /etc/httpd/conf.d/${JOB_NAME}.conf
+echo "        </Directory>" >> /etc/httpd/conf.d/${JOB_NAME}.conf
+echo "</VirtualHost>" >> /etc/httpd/conf.d/${JOB_NAME}.conf
+
+# Reload Apache
+sudo /sbin/service httpd reload
