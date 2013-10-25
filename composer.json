@@ -10,22 +10,11 @@
     ],
     "version": "1.0.0-dev",
     "minimum-stability": "stable",
-    "repositories": [
-        {
-            "type": "pear",
-            "url": "http://pear.php.net"
-        },
-        {
-            "type": "pear",
-            "url": "http://pear.phpunit.de"
-        }
-    ],
     "require": {
         "phpunit/phpunit": "3.7.*",
-        "pear-pear/PHP_CodeSniffer": "1.4.7",
+        "squizlabs/php_codesniffer": "1.*",
         "sebastian/phpcpd": "*",
         "phploc/phploc": "*",
-        "pear-phpunit/PHP_CodeBrowser": "1.0.2",
         "phpmd/phpmd" : "1.4.*",
         "pdepend/pdepend" : "1.1.1"
     },
