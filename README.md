@@ -61,3 +61,7 @@ The server name will be `{JOB_NAME}.loc`.
 _See [behat + jenkins][1] for more details._
 
 [1]: http://stackoverflow.com/a/12074135/536174
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/prestaconcept/meta-ci/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
