@@ -1,11 +1,15 @@
 {
     "name": "presta/meta-ci",
-    "description": "Dependencies for continuous integration",
+    "description": "Manage your vhost for Behat on continuous integration",
     "license": "MIT",
     "authors": [
         {
             "name": "David Epely",
             "email": "depely@prestaconcept.net"
+        },
+        {
+            "name": "Rémy Ferrand",
+            "email": "rferrand@prestaconcept.net"
         }
     ],
     "version": "1.0.0-dev",
@@ -18,5 +22,10 @@
         "phpmd/phpmd" : "1.4.*",
         "pdepend/pdepend" : "1.1.1"
     },
-    "bin": ["bin/ci_init_vhost"]
+    "bin": ["bin/ci_init_vhost"],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
 }
