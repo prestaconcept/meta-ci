@@ -81,7 +81,7 @@ Thanks to
 
 *This project is supported by [PrestaConcept](http://www.prestaconcept.net)*
 
-**Lead Developer** : [@nicolas-bastien](https://github.com/nicolas-bastien)
+**Lead Developer** : [@remyfrd](https://github.com/remyfrd)
 
 Released under the MIT License
 
