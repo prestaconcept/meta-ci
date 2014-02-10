@@ -1,6 +1,9 @@
-# meta-ci
+meta-ci
+=======
 
-presta meta CI package. Proof of concept meta package for continuous integration dependencies
+#Overview #
+
+presta meta CI package. Proof of concept meta package for Manage your vhost for Behat on continuous integration
 
 ## Requirement for ci_init_vhost
 
@@ -62,6 +65,35 @@ _See [behat + jenkins][1] for more details._
 
 [1]: http://stackoverflow.com/a/12074135/536174
 
+## Ask for help ##
+
+:speech_balloon: If you need help about this project you can [post a message on our google group][3]
+
+## Contributing
+
+Pull requests are welcome.
+
+
+Thanks to
+[everyone who has contributed](https://github.com/prestaconcept/PrestaSonataNavigationBundle/graphs/contributors) already.
+
+---
+
+*This project is supported by [PrestaConcept](http://www.prestaconcept.net)*
+
+**Lead Developer** : [@nicolas-bastien](https://github.com/nicolas-bastien)
+
+Released under the MIT License
+
+[3]: https://groups.google.com/forum/?hl=fr&fromgroups#!forum/prestacms-devs
+
+
+
+[2]: https://github.com/prestaconcept/prestacms-sandbox
+[3]: https://groups.google.com/forum/?hl=fr&fromgroups#!forum/prestacms-devs
+[4]: http://prestaconcept.github.io/presta-sonata-navigation/
+[5]: http://sandbox.prestacms.com/
+[6]: http://sandbox.prestacms.com/admin
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/prestaconcept/meta-ci/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
