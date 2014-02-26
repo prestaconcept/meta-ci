@@ -1,9 +1,15 @@
 meta-ci
 =======
 
-#Overview #
 
-presta meta CI package. Proof of concept meta package for Manage your vhost for Behat on continuous integration
+Presta meta CI allows you to create virtual hosts for Jenkins / Travis / Behat.
+It is used by PrestaCMS with our CI and Travis.
+
+
+## Issue tracker ##
+
+:clipboard: Issues are managed in [prestaconcept/open-source-management](https://github.com/prestaconcept/open-source-management) to centralize our open source activity.
+
 
 ## Requirement for ci_init_vhost
 
@@ -75,7 +81,7 @@ Pull requests are welcome.
 
 
 Thanks to
-[everyone who has contributed](https://github.com/prestaconcept/PrestaSonataNavigationBundle/graphs/contributors) already.
+[everyone who has contributed](https://github.com/prestaconcept/meta-ci/graphs/contributors) already.
 
 ---
 
