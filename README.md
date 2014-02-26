@@ -1,4 +1,4 @@
-meta-ci
+Meta-ci
 =======
 
 
@@ -55,7 +55,7 @@ jenkins ALL=(ALL) NOPASSWD: /usr/sbin/apachectl -t
 ~~~
 
 
-## tools
+## Tools
 
 ### setup script for apache in ci
 
