@@ -3,6 +3,7 @@
 HTTPD_JENKINS_VHOST_DIR=/etc/httpd/conf.d/jenkins_vhosts/
 
 HTTPD_WEBROOT=$1
+SERVER_ALIASES=$2
 
 if [ -z "${JOB_NAME}" ]
 then
@@ -48,6 +49,11 @@ echo "== writing vhost file =="
 cat > $HTTPD_JENKINS_VHOST_DIR/${JOB_NAME}.conf <<EOF
 <VirtualHost *:80>
     ServerName ${httpdServerName}
+EOF
+
+[ ! -z "$SERVER_ALIAS" ] && echo "    ServerAliases ${SERVER_ALIASES}" >> $HTTPD_JENKINS_VHOST_DIR/${JOB_NAME}.conf
+
+cat >> $HTTPD_JENKINS_VHOST_DIR/${JOB_NAME}.conf <<EOF
     DocumentRoot ${WORKSPACE}/$HTTPD_WEBROOT
     <Directory ${WORKSPACE}/$HTTPD_WEBROOT>
         AllowOverride all
