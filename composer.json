@@ -12,16 +12,7 @@
             "email": "rferrand@prestaconcept.net"
         }
     ],
-    "version": "1.0.0-dev",
     "minimum-stability": "stable",
-    "require": {
-        "phpunit/phpunit": "3.7.*",
-        "squizlabs/php_codesniffer": "1.*",
-        "sebastian/phpcpd": "*",
-        "phploc/phploc": "*",
-        "phpmd/phpmd" : "1.4.*",
-        "pdepend/pdepend" : "1.1.1"
-    },
     "bin": ["bin/ci_init_vhost"],
     "extra": {
         "branch-alias": {
