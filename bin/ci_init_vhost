@@ -48,6 +48,7 @@ echo "== writing vhost file =="
 cat > $HTTPD_JENKINS_VHOST_DIR/${JOB_NAME}.conf <<EOF
 <VirtualHost *:80>
     ServerName ${httpdServerName}
+    ServerAlias *.${httpdServerName}
     DocumentRoot ${WORKSPACE}/$HTTPD_WEBROOT
     <Directory ${WORKSPACE}/$HTTPD_WEBROOT>
         AllowOverride all
